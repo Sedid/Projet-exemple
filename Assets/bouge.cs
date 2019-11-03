@@ -16,11 +16,11 @@ public class bouge : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(0, vitesse, 0);
+            transform.Rotate(0, vitesse*4, 0);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(0, -vitesse, 0);
+            transform.Rotate(0, -vitesse*4, 0);
         }
         if(Input.GetKey(KeyCode.UpArrow))
         {
