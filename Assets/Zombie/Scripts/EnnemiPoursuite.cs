@@ -29,9 +29,6 @@ public class EnnemiPoursuite : MonoBehaviour
             // On désactive l'animation de repos de l'ennemi lorsqu'il est assez proche du joueur pour le poursuivre
             animationsEnnemi.SetBool("anim_repos", false);
 
-            
-
-
             // Si la longueur du vecteur est supérieur à 1, on dirige l'ennemi vers le joueur uniquement via l'axe Z, de 0.04 de distance à chaque "pas" de l'ennemi 
             if (orientation.magnitude > 1)
             {
