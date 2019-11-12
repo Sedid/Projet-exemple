@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Ce code est crée en dehors du cours
 
 public class EnnemiPoursuite : MonoBehaviour
 {
     static Animator animationsEnnemi;
-
     public Transform joueur;
+    public Slider barrePdv;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,12 @@ public class EnnemiPoursuite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Arrête la poursuite du joueur lorsque l'ennemi meurt
+        if(barrePdv.value <= 0)
+        {
+            return;
+        }
+
         // orientation du joueur vers l'ennemi, ligne directe entre l'ennemi et le joueur
         Vector3 orientation = joueur.position - this.transform.position;
 
@@ -28,9 +35,9 @@ public class EnnemiPoursuite : MonoBehaviour
 
             // On désactive l'animation de repos de l'ennemi lorsqu'il est assez proche du joueur pour le poursuivre
             animationsEnnemi.SetBool("anim_repos", false);
-
-            // Si la longueur du vecteur est supérieur à 1, on dirige l'ennemi vers le joueur uniquement via l'axe Z, de 0.04 de distance à chaque "pas" de l'ennemi 
-            if (orientation.magnitude > 1)
+       
+            // Si la longueur du vecteur est supérieur à 0.6, on dirige l'ennemi vers le joueur uniquement via l'axe Z, de 0.04 de distance à chaque "pas" (avancée) de l'ennemi 
+            if (orientation.magnitude > 0.6)
             {
                 this.transform.Translate(0, 0, .04f);
                 animationsEnnemi.SetBool("anim_marcher", true);
